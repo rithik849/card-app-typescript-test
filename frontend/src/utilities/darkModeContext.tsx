@@ -1,15 +1,13 @@
-import {createContext , useState, FC, ReactNode, useEffect, useContext} from 'react'
-import { DarkMode } from '../@types/context';
+import { FC, ReactNode, createContext, useContext, useEffect, useState } from "react";
+import { DarkMode } from "../@types/context";
 
-export const DarkModeContext = createContext<[boolean, React.Dispatch<React.SetStateAction<boolean>>]>([false, ()=> {}]);
+export const DarkModeContext = createContext<[boolean, React.Dispatch<React.SetStateAction<boolean>>]>([
+  false,
+  () => {},
+]);
 
-export const DarkModeProvider: React.FC<{children : ReactNode}> = ({children}) => {
+export const DarkModeProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
+  const [dark, setDark] = useState<DarkMode>(false);
 
-    const [dark,setDark] = useState<DarkMode>(false)
-
-    return (    
-    <DarkModeContext.Provider value={[dark,setDark]}>
-          {children}
-    </DarkModeContext.Provider>)
-
-}
+  return <DarkModeContext.Provider value={[dark, setDark]}>{children}</DarkModeContext.Provider>;
+};

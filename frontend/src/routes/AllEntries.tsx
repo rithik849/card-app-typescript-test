@@ -1,13 +1,13 @@
 import { useContext } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { Entry, EntryContextType } from "../@types/context";
-import { EntryContext } from "../utilities/globalContext";
 import { DarkModeContext } from "../utilities/darkModeContext";
+import { EntryContext } from "../utilities/globalContext";
 
 export default function AllEntries() {
   const { entries, deleteEntry } = useContext(EntryContext) as EntryContextType;
 
-  const [dark,setDark] = useContext(DarkModeContext)
+  const [dark, setDark] = useContext(DarkModeContext);
 
   let navigate = useNavigate();
   if (entries.length == 0) {
@@ -30,7 +30,9 @@ export default function AllEntries() {
           <div
             id={entry.id}
             key={index}
-            className={`${dark? "bg-gray-600" : "bg-gray-300"} shadow-md shadow-gray-500 m-3 p-4 rounded flex flex-col justify-between`}
+            className={`${
+              dark ? "bg-gray-600" : "bg-gray-300"
+            } shadow-md shadow-gray-500 m-3 p-4 rounded flex flex-col justify-between`}
           >
             <h1 className="font-bold text-sm md:text-lg">{entry.title}</h1>
             <p className="text-center text-lg font-light md:mt-2 md:mb-4 mt-1 mb-3">{entry.description}</p>

@@ -1,8 +1,8 @@
 import { ChangeEvent, MouseEvent, useContext, useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { Entry, EntryContextType } from "../@types/context";
-import { EntryContext } from "../utilities/globalContext";
 import { DarkModeContext } from "../utilities/darkModeContext";
+import { EntryContext } from "../utilities/globalContext";
 
 export default function EditEntry() {
   const { id } = useParams();
@@ -11,8 +11,7 @@ export default function EditEntry() {
   const { updateEntry, entries } = useContext(EntryContext) as EntryContextType;
   const [newEntry, setNewEntry] = useState<Entry>(emptyEntry);
 
-  const [dark, setDark] = useContext(DarkModeContext)
-
+  const [dark, setDark] = useContext(DarkModeContext);
 
   useEffect(() => {
     const entry = entries.filter((entry) => entry.id == id)[0];
@@ -29,9 +28,13 @@ export default function EditEntry() {
   const handleSend = (e: MouseEvent<HTMLButtonElement>) => {
     updateEntry(id as string, newEntry);
   };
-  
+
   return (
-    <section className={`flex justify-center flex-col w-fit ml-auto mr-auto mt-10 gap-5 ${dark? "bg-gray-600": "bg-gray-300"} p-8 rounded-md`}>
+    <section
+      className={`flex justify-center flex-col w-fit ml-auto mr-auto mt-10 gap-5 ${
+        dark ? "bg-gray-600" : "bg-gray-300"
+      } p-8 rounded-md`}
+    >
       <input
         className="p-3 rounded-md"
         type="text"
