@@ -1,32 +1,26 @@
-import React from "react";
+import React, { useContext, useEffect } from "react";
 import NavBar from './components/NavBar'
 import AllEntries from './routes/AllEntries'
 import NewEntry from './routes/NewEntry'
 import EditEntry from './routes/EditEntry'
 import { EntryProvider } from './utilities/globalContext'
+import {DarkModeContext, DarkModeProvider} from './utilities/darkModeContext'
 import {
   BrowserRouter as Router,
   Routes,
   Route
 } from "react-router-dom";
+import RouteDef from "./route_definition";
 
 export default function App() {
+  
+
   return (
-    <section>
-  <Router>
+    <DarkModeProvider>
     <EntryProvider>
-    <NavBar></NavBar>
-      <Routes>
-        <Route path="/" element={<AllEntries/>}>
-        </Route>
-        <Route path="create" element={<NewEntry/>}>
-        </Route>
-        <Route path="edit/:id" element={<EditEntry/>}>
-        </Route>
-      </Routes>
+        <RouteDef/>
     </EntryProvider>
-    </Router>
-    </section>
+    </DarkModeProvider>
     
   );
 }

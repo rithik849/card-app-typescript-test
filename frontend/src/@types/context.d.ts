@@ -11,3 +11,6 @@ export type EntryContextType = {
   updateEntry: (id: string, entryData: Entry) => void;
   deleteEntry: (id: string) => void;
 };
+
+
+export type DarkMode = boolean
